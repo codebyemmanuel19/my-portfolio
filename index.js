@@ -89,4 +89,22 @@ document.querySelectorAll(".menu a").forEach(link => {
   if (linkPage === currentPage) {
     link.classList.add("active");
   }
-});
+}); 
+
+
+// Preloader
+let percent = 0;
+const percentEl = document.querySelector(`.preloader-percent`);
+const preloader = document.querySelector(`.preloader`);
+
+const counter = setInterval(() => {
+  percent += Math.floor(Math.random() * 10) + 1;
+  if (percent >= 100) {
+    percent = 100;
+    clearInterval(counter);
+    setTimeout(() => {
+      preloader.classList.add('hidden');
+    }, 400);
+  }
+  percentEl.textContent = percent + '%';
+}, 80);
